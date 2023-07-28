@@ -16,36 +16,41 @@ class MyComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            brand: "Ford",
-            model: "Mustang",
-            color: "red",
-            year: 1964,
-            city: "Ha Noi"
+            firstName: "",
+            lastName: ""
         };
     }
 
-    handlingOnClick = () => {
-        alert("I'm living in " + this.state.city)
+    handleOnChangeFirstName = (event) => {
+        this.setState({
+            firstName: event.target.value
+        })
     }
 
-    handlingOnChange = (event) => {
+    handleOnChangeLastName = (event) => {
         this.setState({
-            brand: event.target.value
+            lastName: event.target.value
         })
+    }
+
+    handleOnclickSubmit = (event) => {
+        event.preventDefault()
+        console.log(">>>> check submit", this.state)
+        alert("You've submitted")
     }
     render() {
         return (
             <>
-                <div>
-                    <form>
-                        <input type='text' onChange={(event) => this.handlingOnChange(event)}></input>
-                    </form>
-                    <h1>Hello, my name is {this.state.brand}</h1>
-                </div>
+                {console.log(">>>>>> check render", this.state)}
+                <form>
+                    <label htmlFor="fname">First name:<br />
+                        <input type="text" onChange={(event) => this.handleOnChangeFirstName(event)} /><br />
 
-                <div>
-                    <button onClick={this.handlingOnClick}>click me</button>
-                </div>
+                        <label htmlFor="lname" />Last name:</label><br />
+                    <input type="text" onChange={(event) => this.handleOnChangeLastName(event)} /><br /><br />
+
+                    <input type="submit" value="Submit" onClick={(event) => this.handleOnclickSubmit(event)} />
+                </form>
             </>
         )
     }
