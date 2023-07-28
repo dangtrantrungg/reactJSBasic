@@ -19,14 +19,24 @@ class MyComponent extends React.Component {
             brand: "Ford",
             model: "Mustang",
             color: "red",
-            year: 1964
+            year: 1964,
+            city: "Ha Noi"
         };
     }
-    render() {
-        return <>
-            <h1>Hello, my name is {this.state.brand}</h1>
-        </>
 
+    handlingOnClick = () => {
+        alert("I'm living in " + this.state.city)
+    }
+
+    render() {
+        return (
+            <>
+                <h1>Hello, my name is {this.state.brand}</h1>
+                <div>
+                    <button onClick={this.handlingOnClick}>click me</button>
+                </div>
+            </>
+        )
     }
 }
 
