@@ -28,10 +28,21 @@ class MyComponent extends React.Component {
         alert("I'm living in " + this.state.city)
     }
 
+    handlingOnChange = (event) => {
+        this.setState({
+            brand: event.target.value
+        })
+    }
     render() {
         return (
             <>
-                <h1>Hello, my name is {this.state.brand}</h1>
+                <div>
+                    <form>
+                        <input type='text' onChange={(event) => this.handlingOnChange(event)}></input>
+                    </form>
+                    <h1>Hello, my name is {this.state.brand}</h1>
+                </div>
+
                 <div>
                     <button onClick={this.handlingOnClick}>click me</button>
                 </div>
