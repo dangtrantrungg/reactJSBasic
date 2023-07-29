@@ -3,9 +3,11 @@ import React from 'react';
 
 class ChildComponent extends React.Component {
     render() {
+        let { name, age } = this.props
         return (
             <>
-                <div>this is ChildComponent</div>
+                {console.log(">>>>>>>> check props", this.props)}
+                <div>this is ChildComponent {name} {age}</div>
             </>
         )
     }
