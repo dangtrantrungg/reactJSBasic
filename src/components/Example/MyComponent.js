@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ChildComponent from './ChildComponent';
 /**
  * 
  * class component phải được đặt tên bắt đầu bằng kí tự uppercase
@@ -33,10 +33,10 @@ class MyComponent extends React.Component {
         })
     }
 
-    handleOnclickSubmit = (event) => {
+    handleOnClickSubmit = (event) => {
         event.preventDefault()
         console.log(">>>> check submit", this.state)
-        alert("You've submitted")
+        alert("You've submitted successfully")
     }
     render() {
         return (
@@ -49,8 +49,9 @@ class MyComponent extends React.Component {
                         <label htmlFor="lname" />Last name:</label><br />
                     <input type="text" onChange={(event) => this.handleOnChangeLastName(event)} /><br /><br />
 
-                    <input type="submit" value="Submit" onClick={(event) => this.handleOnclickSubmit(event)} />
+                    <input type="submit" onClick={(event) => this.handleOnClickSubmit(event)} />
                 </form>
+                <ChildComponent />
             </>
         )
     }
