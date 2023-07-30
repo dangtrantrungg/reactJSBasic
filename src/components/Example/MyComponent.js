@@ -17,7 +17,13 @@ class MyComponent extends React.Component {
         super(props);
         this.state = {
             firstName: "",
-            lastName: ""
+            lastName: "",
+            arrJobs: [
+                { id: "job1", nameJob: "dev", salary: "1000$" },
+                { id: "job2", nameJob: "tester", salary: "500$" },
+                { id: "job3", nameJob: "baoVe", salary: "300$" }
+            ]
+
         };
     }
 
@@ -52,8 +58,9 @@ class MyComponent extends React.Component {
                     <input type="submit" onClick={(event) => this.handleOnClickSubmit(event)} />
                 </form>
                 <ChildComponent
-                    name={"abc"}
+                    name={this.state.firstName}
                     age={"20"}
+                    job={this.state.arrJobs}
                 />
             </>
         )
