@@ -1,5 +1,6 @@
 import React from 'react';
 import ChildComponent from './ChildComponent';
+import AddComponent from '../AddComponent';
 /**
  * 
  * class component phải được đặt tên bắt đầu bằng kí tự uppercase
@@ -16,8 +17,6 @@ class MyComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
             arrJobs: [
                 { id: "job1", nameJob: "dev", salary: "1000$" },
                 { id: "job2", nameJob: "tester", salary: "500$" },
@@ -26,39 +25,13 @@ class MyComponent extends React.Component {
 
         };
     }
-
-    handleOnChangeFirstName = (event) => {
-        this.setState({
-            firstName: event.target.value
-        })
-    }
-
-    handleOnChangeLastName = (event) => {
-        this.setState({
-            lastName: event.target.value
-        })
-    }
-
-    handleOnClickSubmit = (event) => {
-        event.preventDefault()
-        console.log(">>>> check submit", this.state)
-        alert("You've submitted successfully")
-    }
     render() {
         return (
             <>
-                {console.log(">>>>>> check render", this.state)}
-                <form>
-                    <label htmlFor="fname">First name:<br />
-                        <input type="text" onChange={(event) => this.handleOnChangeFirstName(event)} /><br />
+                <AddComponent />
 
-                        <label htmlFor="lname" />Last name:</label><br />
-                    <input type="text" onChange={(event) => this.handleOnChangeLastName(event)} /><br /><br />
-
-                    <input type="submit" onClick={(event) => this.handleOnClickSubmit(event)} />
-                </form>
                 <ChildComponent
-                    name={this.state.firstName}
+                    name={"Trung"}
                     age={"20"}
                     job={this.state.arrJobs}
                 />
