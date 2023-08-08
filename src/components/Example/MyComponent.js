@@ -18,22 +18,32 @@ class MyComponent extends React.Component {
         super(props);
         this.state = {
             arrJobs: [
-                { id: "job1", nameJob: "dev", salary: "1000$" },
-                { id: "job2", nameJob: "tester", salary: "500$" },
-                { id: "job3", nameJob: "baoVe", salary: "300$" }
+                { id: "job1", nameJob: "dev", salary: "1000" },
+                { id: "job2", nameJob: "tester", salary: "500" },
+                { id: "job3", nameJob: "baoVe", salary: "300" }
             ]
 
         };
     }
+
+    addNewJob = (job) => {
+        console.log('123', job)
+        this.setState({
+            arrJobs: [...this.state.arrJobs, job]
+        })
+    }
+
     render() {
         return (
             <>
-                <AddComponent />
+                <AddComponent
+                    newJob={this.addNewJob}
+                />
 
                 <ChildComponent
                     name={"Trung"}
                     age={"20"}
-                    job={this.state.arrJobs}
+                    listJobs={this.state.arrJobs}
                 />
             </>
         )

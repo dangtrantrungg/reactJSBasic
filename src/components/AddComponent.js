@@ -9,18 +9,18 @@ class AddComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            jobName: "",
+            nameJob: "",
             salary: "",
         };
     }
 
-    handleOnChangeFirstName = (event) => {
+    handleOnChangenameJob = (event) => {
         this.setState({
-            jobName: event.target.value
+            nameJob: event.target.value
         })
     }
 
-    handleOnChangeLastName = (event) => {
+    handleOnChangeSalary = (event) => {
         this.setState({
             salary: event.target.value
         })
@@ -29,18 +29,22 @@ class AddComponent extends React.Component {
     handleOnClickSubmit = (event) => {
         event.preventDefault()
         console.log(">>>> check submit", this.state)
+        this.props.newJob({
+            id: Math.floor(Math.random() * 999) + 1,
+            nameJob: this.state.nameJob,
+            salary: this.state.salary
+        })
         alert("You've submitted successfully")
     }
     render() {
         return (
             <>
-                {console.log(">>>>>> check render", this.state)}
                 <form>
                     <label htmlFor="fname">Job name:<br />
-                        <input type="text" onChange={(event) => this.handleOnChangeFirstName(event)} /><br />
+                        <input type="text" onChange={(event) => this.handleOnChangenameJob(event)} /><br />
 
                         <label htmlFor="lname" />Salary:</label><br />
-                    <input type="text" onChange={(event) => this.handleOnChangeLastName(event)} /><br /><br />
+                    <input type="text" onChange={(event) => this.handleOnChangeSalary(event)} /><br /><br />
 
                     <input type="submit" onClick={(event) => this.handleOnClickSubmit(event)} />
                 </form>

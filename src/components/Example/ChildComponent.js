@@ -17,7 +17,7 @@ class ChildComponent extends React.Component {
         })
     }
     render() {
-        let { name, age, job } = this.props
+        let { name, age, listJobs } = this.props
         const { valid } = this.state
         return (
             <>
@@ -37,10 +37,10 @@ class ChildComponent extends React.Component {
                     // muốn render nhiều <dive> thì cần phải sử dụng JSX fragment <>.....</>
                     <>
                         <div className='job-list'>
-                            {job.map((item, index) => {
+                            {listJobs.map((item, index) => {
                                 return (
                                     <div key={item.id}>
-                                        {item.nameJob} - {item.salary}
+                                        {item.nameJob} - {item.salary}$
                                     </div>
                                 )
                             })}
