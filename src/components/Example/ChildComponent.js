@@ -16,13 +16,16 @@ class ChildComponent extends React.Component {
             valid: !this.state.valid
         })
     }
+
+    handleDelete = (job) => {
+        console.log(">>>>>>> check delete", job)
+        this.props.removeJob(job)
+    }
     render() {
-        let { name, age, listJobs } = this.props
+        let { listJobs } = this.props
         const { valid } = this.state
         return (
             <>
-                {console.log(">>>>>>>> check props", this.props)}
-                <div>this is ChildComponent {name} - {age} </div>
                 {/**
                  * kiểm tra xem trạng thái của valid là gì
                  * nếu trạng thái là false thì hiện nút show
@@ -34,13 +37,13 @@ class ChildComponent extends React.Component {
                         <button onClick={() => this.handleShowHide()}>Show</button>
                     </div>
                     :
-                    // muốn render nhiều <dive> thì cần phải sử dụng JSX fragment <>.....</>
+                    // muốn render nhiều <div> thì cần phải sử dụng JSX fragment <>.....</>
                     <>
                         <div className='job-list'>
                             {listJobs.map((item, index) => {
                                 return (
                                     <div key={item.id}>
-                                        {item.nameJob} - {item.salary}$
+                                        {item.nameJob} - {item.salary}$ <></> <span onClick={() => this.handleDelete(item)}>x</span>
                                     </div>
                                 )
                             })}
