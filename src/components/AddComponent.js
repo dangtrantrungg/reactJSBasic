@@ -2,8 +2,8 @@ import React from 'react';
 
 class AddComponent extends React.Component {
     /**
-  * state sinh ra với mục đích để cập nhật realtime khi có sự thay đổi
- */
+     * state sinh ra với mục đích để cập nhật realtime khi có sự thay đổi
+     */
 
     /*khai báo 1 state chuẩn*/
     constructor(props) {

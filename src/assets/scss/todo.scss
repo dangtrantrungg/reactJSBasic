@@ -1,0 +1,22 @@
+.todo-container {
+    button {
+        cursor: pointer;
+    }
+
+
+    .todo-input {}
+
+    .todo-child {
+        .edit {
+            margin: 0 10px;
+        }
+
+        &:first-child {
+            border-top: 1px solid gray;
+        }
+
+        margin: 0 auto;
+        width: 400px;
+        border-bottom: 1px solid gray;
+    }
+}
