@@ -4,15 +4,16 @@
     }
 
 
+
     .todo-input {}
 
     .todo-child {
-        .edit {
-            margin: 0 10px;
+        fieldset:first-child {
+            background-color: aqua;
         }
 
-        &:first-child {
-            border-top: 1px solid gray;
+        .edit {
+            margin: 0 10px;
         }
 
         margin: 0 auto;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ChildComponent from './ChildComponent';
-import AddComponent from '../AddComponent';
+import AddComponent from './AddComponent';
 /**
  * 
  * class component phải được đặt tên bắt đầu bằng kí tự uppercase

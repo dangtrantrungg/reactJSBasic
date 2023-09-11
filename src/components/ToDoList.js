@@ -1,6 +1,7 @@
 import React from 'react';
 import "../assets/scss/todo.scss";
-import AddNewWork from './Example/AddNewWork';
+import AddNewWork from './AddNewWork';
+
 import { toast } from 'react-toastify';
 
 
@@ -13,8 +14,8 @@ class ToDoList extends React.Component {
                 { id: "w1", nameWork: "doing homework" },
                 { id: "w2", nameWork: "playing game" },
                 { id: "w3", nameWork: "watching movie" }
-            ]
-
+            ],
+            cloneListWork: {}
         };
     }
 
@@ -24,9 +25,52 @@ class ToDoList extends React.Component {
         })
         toast.success("well done!")
     }
-    render() {
-        let { listWork } = this.state;
 
+    deleteWork = (work) => {
+        let currentJob = this.state.listWork
+        currentJob = currentJob.filter(item => item.id !== work.id)
+        this.setState({
+            listWork: currentJob
+        })
+        toast.success('delete successfully')
+    }
+
+    handleEdit = (work) => {
+        let { cloneListWork, listWork } = this.state;
+        let isEmptyObj = Object.keys(cloneListWork).length === 0;
+
+        if (isEmptyObj === false && cloneListWork.id === work.id) {
+            let listWorkCopy = [...listWork]
+
+            let objIndex = listWorkCopy.findIndex((item => item.id === work.id));
+
+            listWorkCopy[objIndex].nameWork = cloneListWork.nameWork
+            console.log(">>>>>> check indx copy", listWorkCopy[objIndex])
+
+            this.setState({
+                listWork: listWorkCopy,
+                cloneListWork: ""
+            })
+
+            console.log(">>>> check after updated ", listWork)
+            return;
+        }
+
+        this.setState({
+            cloneListWork: work
+        })
+    }
+
+    handleOnChange = (event) => {
+        let editCloneListWork = { ...this.state.cloneListWork }
+        editCloneListWork.nameWork = event.target.value
+        this.setState({
+            cloneListWork: editCloneListWork
+        })
+    }
+    render() {
+        let { listWork, cloneListWork } = this.state;
+        let isEmptyObj = Object.keys(cloneListWork).length === 0;
         return (
             <>
                 <div>ToDo App</div>
@@ -34,19 +78,35 @@ class ToDoList extends React.Component {
                     <AddNewWork
                         newWork={this.addNewWork}
                     />
-
                     {listWork && listWork.length > 0 &&
                         listWork.map((item, index) => {
                             return (
                                 <div className='todo-child' key={item.id}>
-                                    <span>{index + 1} - {item.nameWork}</span>
-                                    <button className='edit'>Edit</button>
-                                    <button className='delete'>Delete</button>
+                                    {isEmptyObj === true ?
+                                        <span>{index + 1} - {item.nameWork}</span>
+                                        :
+                                        <>
+                                            {cloneListWork.id === item.id ?
+                                                <span>{index + 1} - <input value={cloneListWork.nameWork} type="text"
+                                                    onChange={(event) => this.handleOnChange(event)} /></span>
+                                                :
+                                                <span>{index + 1} - {item.nameWork}</span>
+                                            }
+
+                                        </>
+
+                                    }
+
+                                    <button className='edit' onClick={() => this.handleEdit(item)}>
+                                        {isEmptyObj === false && cloneListWork.id === item.id ?
+                                            'save' : 'edit'
+                                        }
+                                    </button>
+                                    <button className='delete' onClick={() => this.deleteWork(item)}>Delete</button>
                                 </div>
                             )
                         })
                     }
-
                 </div>
             </>
         )
