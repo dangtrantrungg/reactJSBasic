@@ -1,5 +1,5 @@
 import React from 'react';
-import "../assets/scss/todo.scss";
+import "../..//assets/scss/todo.scss";
 import AddNewWork from './AddNewWork';
 
 import { toast } from 'react-toastify';
@@ -45,14 +45,12 @@ class ToDoList extends React.Component {
             let objIndex = listWorkCopy.findIndex((item => item.id === work.id));
 
             listWorkCopy[objIndex].nameWork = cloneListWork.nameWork
-            console.log(">>>>>> check indx copy", listWorkCopy[objIndex])
 
             this.setState({
                 listWork: listWorkCopy,
                 cloneListWork: ""
             })
-
-            console.log(">>>> check after updated ", listWork)
+            toast.success("updated successfully")
             return;
         }
 
@@ -64,6 +62,11 @@ class ToDoList extends React.Component {
     handleOnChange = (event) => {
         let editCloneListWork = { ...this.state.cloneListWork }
         editCloneListWork.nameWork = event.target.value
+
+        if (editCloneListWork === null) {
+            toast.error("missing parameter")
+            return;
+        }
         this.setState({
             cloneListWork: editCloneListWork
         })

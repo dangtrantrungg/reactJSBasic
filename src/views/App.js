@@ -1,16 +1,39 @@
 import logo from './logo.svg';
 import './App.scss';
 import MyComponent from '../components/Example/MyComponent';
-import ToDoList from '../components/ToDoList';
+import ToDoList from '../components/Todo/ToDoList';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Nav from '../components/Nav/Nav';
+import Home from '../components/Home/Home';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 function App() {
   return (
+
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* <MyComponent /> */}
-        <ToDoList />
+        <Router>
+          <Nav />
+          <img src={logo} className="App-logo" alt="logo" />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/todo">
+              <ToDoList />
+            </Route>
+            <Route path="/about">
+              <MyComponent />
+            </Route>
+          </Switch>
+        </Router>
+
+
       </header>
 
       <ToastContainer
@@ -25,9 +48,11 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      {/* Same as */}
       <ToastContainer />
+
+
     </div>
+
   );
 }
 
