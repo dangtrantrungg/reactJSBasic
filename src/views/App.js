@@ -8,7 +8,7 @@ import Nav from '../components/Nav/Nav';
 import Home from '../components/Home/Home';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route
 } from "react-router-dom";
 
@@ -20,17 +20,16 @@ function App() {
         <Router>
           <Nav />
           <img src={logo} className="App-logo" alt="logo" />
-          <Switch>
+          <Routes>
             <Route exact path="/">
               <Home />
             </Route>
             <Route path="/todo">
               <ToDoList />
             </Route>
-            <Route path="/about">
-              <MyComponent />
+            <Route path="/about" element={<MyComponent />}>
             </Route>
-          </Switch>
+          </Routes>
         </Router>
 
 
