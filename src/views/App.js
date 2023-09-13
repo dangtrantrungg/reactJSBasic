@@ -7,25 +7,33 @@ import 'react-toastify/dist/ReactToastify.css';
 import Nav from '../components/Nav/Nav';
 import Home from '../components/Home/Home';
 import {
-  BrowserRouter,
-  Routes,
+  BrowserRouter as Router,
+  Switch,
   Route
 } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <header className="App-header">
-          <Nav />
-          <img src={logo} className="App-logo" alt="logo" />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/todo" element={<ToDoList />} />
-            <Route path="/about" element={<MyComponent />} />
-          </Routes>
+          <Router>
+            <Nav />
+            <img src={logo} className="App-logo" alt="logo" />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/todo">
+                <ToDoList />
+              </Route>
+              <Route path="/about">
+                <MyComponent />
+              </Route>
+            </Switch>
+          </Router>
         </header>
-      </BrowserRouter>
+      </Router>
 
 
       <ToastContainer

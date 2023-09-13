@@ -10,8 +10,7 @@ class Nav extends React.Component {
                 <div class="topnav">
                     <NavLink
                         className={(navData) => (navData.isActive ? 'active' : '')}
-                        to="/"
-                        end
+                        to="/" exact
                     >
                         Home
                     </NavLink>
