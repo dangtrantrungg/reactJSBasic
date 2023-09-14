@@ -1,7 +1,7 @@
 import React from 'react';
 import "../..//assets/scss/todo.scss";
 import AddNewWork from './AddNewWork';
-
+import Color from "../HOC/Color";
 import { toast } from 'react-toastify';
 
 
@@ -116,4 +116,5 @@ class ToDoList extends React.Component {
     }
 }
 
-export default ToDoList;
+export default Color(ToDoList);
+// export default ToDoList;
