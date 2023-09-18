@@ -7,7 +7,7 @@ class Nav extends React.Component {
     render() {
         return (
             <>
-                <div class="topnav">
+                <div className="topnav">
                     <NavLink
                         className={(navData) => (navData.isActive ? 'active' : '')}
                         to="/" exact
@@ -27,6 +27,13 @@ class Nav extends React.Component {
                         end
                     >
                         About
+                    </NavLink>
+                    <NavLink
+                        className={(navData) => (navData.isActive ? 'active' : '')}
+                        to="/users"
+                        end
+                    >
+                        Users
                     </NavLink>
                 </div>
             </>
