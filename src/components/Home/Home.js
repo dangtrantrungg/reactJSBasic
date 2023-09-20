@@ -1,5 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import logo from "../../assets/img/meme.png"
+
 class Home extends React.Component {
     componentDidMount() {
         // setTimeout(() => {
@@ -11,6 +13,9 @@ class Home extends React.Component {
         return (
             <>
                 <div>Hello World</div>
+                <div>
+                    <img src={logo} />
+                </div>
             </>
         )
     }
